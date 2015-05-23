@@ -30,19 +30,23 @@ public class TodoController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody List<Todo> getTodoList() {
-        // TODO Ajouter une condition pour vérifier si TODO_FEATURE est actif ou non
-        LOGGER.debug("Get list of all todos");
-        return todoService.findAll();
+        if (MiniwsFeatures.TODO_FEATURE.isActive()) {
+            LOGGER.debug("Get list of all todos");
+            return todoService.findAll();
+        }
+        throw new ResourceNotFoundException();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Todo getTodo(@PathVariable Integer id) {
-        // TODO Ajouter une condition pour vérifier si TODO_FEATURE est actif ou non
-        LOGGER.debug("Get the todo with id : {}", id);
-        try {
-            return todoService.findOne(id);
-        } catch (IllegalArgumentException e) {
-            throw new ResourceNotFoundException();
+        if (MiniwsFeatures.TODO_FEATURE.isActive()) {
+            LOGGER.debug("Get the todo with id : {}", id);
+            try {
+                return todoService.findOne(id);
+            } catch (IllegalArgumentException e) {
+                throw new ResourceNotFoundException();
+            }
         }
+        throw new ResourceNotFoundException();
     }
 }

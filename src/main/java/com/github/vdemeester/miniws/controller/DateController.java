@@ -21,8 +21,10 @@ public class DateController {
     public
     @ResponseBody
     LocalDateTime getDate() {
-        // TODO Afficher la date courant (LocalDateTime.now()) si et seulement si la feature DATE_FEATURE est active
-        // TODO Sinon, lever une exception
-        return null;
+        if (MiniwsFeatures.DATE_FEATURE.isActive()) {
+            return LocalDateTime.now();
+        }
+        throw new ResourceNotFoundException();
     }
+
 }

@@ -16,7 +16,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 group = 'com.github.vdemeester'
-version = '1.0.0'
+version = '2.0.0'
 
 jar {
     baseName = 'miniws'

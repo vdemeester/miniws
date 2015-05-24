@@ -13,6 +13,7 @@ public class Todo {
     private final Integer id;
     private final String name;
     private final Boolean completed;
+    private final String description;
     private final LocalDateTime due;
 
 
@@ -20,10 +21,12 @@ public class Todo {
     public Todo(@JsonProperty("id") Integer id,
                 @JsonProperty("name") String name,
                 @JsonProperty("completed") Boolean completed,
+                @JsonProperty("description") String description,
                 @JsonProperty("dueDateTime") LocalDateTime due) {
         this.id = id;
         this.name = name;
         this.completed = completed;
+        this.description = description;
         this.due = due;
     }
 
@@ -43,6 +46,10 @@ public class Todo {
         return due;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,13 +57,14 @@ public class Todo {
         Todo todo = (Todo) o;
         return Objects.equals(id, todo.id) &&
                 Objects.equals(name, todo.name) &&
+                Objects.equals(description, todo.description) &&
                 Objects.equals(completed, todo.completed) &&
                 Objects.equals(due, todo.due);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, completed, due);
+        return Objects.hash(id, name, description, completed, due);
     }
 
     @Override
@@ -64,6 +72,7 @@ public class Todo {
         final StringBuffer sb = new StringBuffer("Todo{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
         sb.append(", completed=").append(completed);
         sb.append(", due=").append(due);
         sb.append('}');

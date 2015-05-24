@@ -5,4 +5,4 @@ COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN ./gradlew build
 
-CMD ["java", "-jar", "build/libs/miniws-1.0.0.jar"]
+CMD ["java", "-jar", "build/libs/miniws-2.0.0.jar"]

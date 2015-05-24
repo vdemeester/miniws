@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class TodoService {
 
-    private static final Todo TODO1 = new Todo(1, "todo1", true, null);
-    private static final Todo TODO2 = new Todo(2, "todo2", false, LocalDateTime.now());
-    private static final Todo TODO3 = new Todo(3, "todo3", false, LocalDateTime.of(2015, 8, 1, 0, 0));
+    private static final Todo TODO1 = new Todo(1, "todo1", true, "Nothing to see here", null);
+    private static final Todo TODO2 = new Todo(2, "todo2", false, "Already late on this one", LocalDateTime.now());
+    private static final Todo TODO3 = new Todo(3, "todo3", false, "Deploy Docker in production ;-P", LocalDateTime.of(2015, 8, 1, 0, 0));
 
     public List<Todo> findAll() {
         return Lists.newArrayList(TODO1, TODO2, TODO3);
